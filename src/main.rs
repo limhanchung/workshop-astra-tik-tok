@@ -15,6 +15,7 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(move || {
         App::new()
+        //    .route("/ws/", web::get().to(index))
             .service(start_connection_route) //register our route. rename with "as" import or naming conflict
             .data(chat_server.clone()) //register the lobby
     })
@@ -22,3 +23,11 @@ async fn main() -> std::io::Result<()> {
     .run()
     .await
 }
+
+// #[actix_web::main]
+// async fn main() -> std::io::Result<()> {
+//     HttpServer::new(|| App::new().route("/ws/", web::get().to(index)))
+//         .bind("127.0.0.1:8080")?
+//         .run()
+//         .await
+// }

@@ -16,7 +16,7 @@ pub async fn start_connection(
         group_id,
         srv.get_ref().clone(),
     );
-
+    println!("hello");
     let resp = ws::start(ws, &req, stream)?;
     Ok(resp)
 }
